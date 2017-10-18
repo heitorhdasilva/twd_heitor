@@ -2,15 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 def index(request):
-    textp = """
-    <h1>Olá heitor!</h1>
-    <a href = '/rango/about'>About </a>
-    """
-    return HttpResponse(textp)
+
+    context_dict = {'boldmessage': "I am bold font from the context"}
+
+    return render(request,'rango/index.html', context_dict)
 
 def about(request):
-    texto = """
-    <h1>Sobre o Rango</h1>
-    <a href = '/rango'>Voltar</a>
-    """
-    return HttpResponse(texto)
+    texto = {'saudacao' : 'Ola viajante','nome' : 'George'}
+    return render(request,'rango/about.html', texto)
